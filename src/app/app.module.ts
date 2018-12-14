@@ -2,10 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
+import { HeaderComponent } from './header/header.component';
+import { CardComponent } from './card/card.component';
+import { ProductsFilterPipe } from './products-filter.pipe';
+// NgModule == es6 module
+// declarations == let , const
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    CardComponent,
+    ProductsFilterPipe
   ],
   imports: [
     BrowserModule
