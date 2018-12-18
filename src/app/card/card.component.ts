@@ -14,4 +14,8 @@ export class CardComponent {
   @Input()
   public isOdd!: boolean;
 
+
+  public dollarPrice(price: number): number {
+    return price / 28.1;
+  }
 }
