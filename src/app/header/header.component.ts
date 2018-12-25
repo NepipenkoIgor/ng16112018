@@ -12,6 +12,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'course-header',
@@ -29,9 +30,15 @@ export class HeaderComponent implements OnInit, OnChanges, DoCheck,
   @Output()
   public search: EventEmitter<string> = new EventEmitter();
 
-  public constructor() {
+  public constructor(
+    private _router: Router
+  ) {
     // tslint:disable-next-line
     console.log('constructor');
+  }
+
+  public goToProducts(): void {
+    this._router.navigate(['products']);
   }
 
   public ngOnInit(): void {

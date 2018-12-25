@@ -1,8 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { IProduct } from './mock/products';
-import { Observable } from 'rxjs';
-import { ProductService } from './product.service';
 import { LargeService } from './common/services/large.service';
 import { SmallService } from './common/services/small.service';
 
@@ -15,12 +12,11 @@ export class AppComponent {
   public logo: string = 'assets/img/logo.png';
   public placeholder: string = 'Более 1000 товаров';
   public text!: string;
-  public products$: Observable<IProduct[]> = this._productService.getProducts();
+
   private _span: string = '<span style="color:red">Hi all</span>';
 
   public constructor(
     private  _sanitazer: DomSanitizer,
-    private _productService: ProductService,
     @Inject('SizeService') private _sizeService: LargeService | SmallService,
   ) {
     this._sizeService.run();

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProductService } from './product.service';
+import { CustomPreloadService } from './custom-preload.service';
 
-describe('ProductService', () => {
+describe('CustomPreloadService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ProductService = TestBed.get(ProductService);
+    const service: CustomPreloadService = TestBed.get(CustomPreloadService);
     expect(service).toBeTruthy();
   });
 });

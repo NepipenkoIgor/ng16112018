@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../mock/products';
+import { IProduct } from '../../../../mock/products';
 
 @Component({
   selector: 'course-card',

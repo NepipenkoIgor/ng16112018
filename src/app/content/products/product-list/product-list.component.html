@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row" *ngIf="products$ | async  as products; else loadingTemplate">
+    <course-card *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd"
+                 [product]="product"
+                 [isOdd]="isOdd"
+    ></course-card>
+  </div>
+  <ng-template #loadingTemplate>
+    ...loading
+  </ng-template>
+</div>
