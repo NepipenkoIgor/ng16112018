@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { IProduct } from '../../../mock/products';
 import { ProductService } from '../product.service';
 import { catchError } from 'rxjs/operators';
 

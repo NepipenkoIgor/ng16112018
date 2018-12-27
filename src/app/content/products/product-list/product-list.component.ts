@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IProduct } from '../../../mock/products';
 import { ProductService } from '../product.service';
 
 @Component({

@@ -1,15 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-export interface IProduct {
-  '_id': string;
-  'title': string;
-  'serial': number;
-  'author': string;
-  'price': number;
-  'src': string;
-}
-
 export const products: IProduct[] = [{
   '_id': '58e1f80939d7162e9a0a9eb0',
   'title': 'Обои 1',

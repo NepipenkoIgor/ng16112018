@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Params } from '@angular/router';
-import { IProduct } from '../../../mock/products';
 
 @Component({
   selector: 'course-product',

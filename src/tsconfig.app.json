@@ -5,7 +5,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "../out-tsc/app",
-    "types": []
   },
   "exclude": [
     "test.ts",
