@@ -2,6 +2,13 @@ import { Component, Inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { LargeService } from './common/services/large.service';
 import { SmallService } from './common/services/small.service';
+import { Store } from '@ngrx/store';
+
+// enum Size {
+//   XL = 52,
+//   L = 48,
+//   s = 46
+// }
 
 @Component({
   selector: 'course-root',
@@ -18,8 +25,16 @@ export class AppComponent {
   public constructor(
     private  _sanitazer: DomSanitizer,
     @Inject('SizeService') private _sizeService: LargeService | SmallService,
+    private _store: Store<IStore>
   ) {
     this._sizeService.run();
+
+    this._store.select('currentProduct')
+      .subscribe((product: IProduct | null) => {
+        console.log(product);
+      });
+    // const europeXL: string = Size[52];
+    // console.log(`europeXL => ${europeXL}`);
   }
 
   public safeSpan(): SafeHtml {

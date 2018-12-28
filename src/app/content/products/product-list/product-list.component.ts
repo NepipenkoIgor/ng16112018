@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductService } from '../product.service';
+import { Store } from '@ngrx/store';
+import { GetProductsPending } from '../../../store/actions/products.action';
 
 @Component({
   selector: 'course-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
 
-  public products$: Observable<IProduct[]> = this._productService.getProducts();
+  public products$!: Observable<IProduct[]>;
 
   public constructor(
-    private _productService: ProductService,
+    private _store: Store<IStore>
   ) {
+  }
+
+  public ngOnInit(): void {
+    this._store.dispatch(new GetProductsPending());
+    this.products$ = this._store.select('products');
   }
 
 }

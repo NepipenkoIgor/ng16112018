@@ -6,7 +6,6 @@ import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './content/products/product-list/card/card.component';
 import { ProductsFilterPipe } from './content/products/products-filter.pipe';
 import { TooltipDirective } from './common/directives/tooltip.directive';
-import { ProductService } from './content/products/product.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BASE_URL_TOKEN } from './config';
 import { environment } from '../environments/environment';
@@ -19,6 +18,11 @@ import { ProductListComponent } from './content/products/product-list/product-li
 import { ProductComponent } from './content/products/product/product.component';
 import { ResolveService } from './content/products/product/resolve.service';
 import { CustomPreloadService } from './common/services/custom-preload.service';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffect, ProductsEffect } from './store/effects/products.effect';
 // NgModule == es6 module
 // declarations == let , const
 @NgModule({
@@ -35,6 +39,11 @@ import { CustomPreloadService } from './common/services/custom-preload.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([ProductsEffect, ProductEffect]),
+    environment.production
+      ? []
+      : StoreDevtoolsModule.instrument(),
     RouterModule.forRoot(routes, {preloadingStrategy: CustomPreloadService})
   ],
   providers: [
@@ -43,10 +52,6 @@ import { CustomPreloadService } from './common/services/custom-preload.service';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    },
-    {
-      provide: ProductService, // ключ
-      useClass: ProductService  // что по ключу отдать ???
     },
     {
       provide: BASE_URL_TOKEN,
