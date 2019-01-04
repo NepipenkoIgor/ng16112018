@@ -15,8 +15,9 @@ import {
 
 @Injectable()
 export class ProductsEffect {
+
   @Effect()
-  public products$: Observable<Action> = this._actions$.pipe(
+  public p$: Observable<Action> = this._actions$.pipe(
     ofType(GET_PRODUCTS_PENDING),
     switchMap(() =>
       this._http.get<IProduct[]>(`/products`).pipe(
@@ -28,17 +29,8 @@ export class ProductsEffect {
     )
   );
 
-  public constructor(
-    private _http: HttpClient,
-    private _actions$: Actions
-  ) {
-  }
-}
-
-@Injectable()
-export class ProductEffect {
   @Effect()
-  public products$: Observable<Action> = this._actions$.pipe(
+  public product$: Observable<Action> = this._actions$.pipe(
     ofType(GET_PRODUCT_PENDING),
     // tslint:disable-next-line
     switchMap((action: any) =>

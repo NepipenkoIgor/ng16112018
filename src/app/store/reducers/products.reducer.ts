@@ -3,18 +3,19 @@ import {
   GET_PRODUCT_SUCCESS,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_SUCCESS,
-  GetProductsSuccess
+  GetProductsSuccess,
+  ProductsAction
 } from '../actions/products.action';
 
 const initialProductsState: IProduct[] = [];
 const initialCurrentProductState: IProduct = {} as IProduct;
 
 // tslint:disable-next-line
-export function productsReducer(state: IProduct[] = initialProductsState, action: any) {
+export function productsReducer(state: IProduct[] = initialProductsState, action: ProductsAction) {
   console.log(action instanceof GetProductsSuccess);
   switch (action.type) {
     case GET_PRODUCTS_SUCCESS:
-      return action.payload;
+      return (action as GetProductsSuccess).payload;
     case GET_PRODUCTS_ERROR:
       return state;
     default:

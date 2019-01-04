@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, skip, take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { GetProductPending } from '../../../store/actions/products.action';
+import { IStore } from '../../../store';
 
 @Injectable({
   providedIn: 'root'

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { GetProductsPending } from '../../../store/actions/products.action';
+import { IStore } from '../../../store';
+import { productsWithBonuses } from '../../../store/reducers/cart.reducer';
 
 @Component({
   selector: 'course-product-list',
@@ -19,7 +21,7 @@ export class ProductListComponent implements OnInit {
 
   public ngOnInit(): void {
     this._store.dispatch(new GetProductsPending());
-    this.products$ = this._store.select('products');
+    this.products$ = this._store.select(productsWithBonuses);
   }
 
 }

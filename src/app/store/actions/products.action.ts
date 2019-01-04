@@ -39,3 +39,5 @@ export class GetProductSuccess {
 export class GetProductError {
   public readonly type: string = GET_PRODUCT_ERROR;
 }
+
+export type ProductsAction = GetProductsSuccess | GetProductsError;

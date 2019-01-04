@@ -22,7 +22,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
-import { ProductEffect, ProductsEffect } from './store/effects/products.effect';
+import { ProductsEffect } from './store/effects/products.effect';
+import { CartComponent } from './header/cart/cart.component';
+import { CartProductComponent } from './header/cart/cart-product/cart-product.component';
 // NgModule == es6 module
 // declarations == let , const
 @NgModule({
@@ -35,12 +37,14 @@ import { ProductEffect, ProductsEffect } from './store/effects/products.effect';
     ProductsComponent,
     ProductListComponent,
     ProductComponent,
+    CartComponent,
+    CartProductComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ProductsEffect, ProductEffect]),
+    EffectsModule.forRoot([ProductsEffect]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument(),

@@ -3,6 +3,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { LargeService } from './common/services/large.service';
 import { SmallService } from './common/services/small.service';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { IStore } from './store';
 
 // enum Size {
 //   XL = 52,
@@ -20,6 +23,8 @@ export class AppComponent {
   public placeholder: string = 'Более 1000 товаров';
   public text!: string;
 
+  private _ubsubscribeSubject$$: Subject<boolean> = new Subject();
+
   private _span: string = '<span style="color:red">Hi all</span>';
 
   public constructor(
@@ -30,9 +35,15 @@ export class AppComponent {
     this._sizeService.run();
 
     this._store.select('currentProduct')
+      .pipe(
+        takeUntil(this._ubsubscribeSubject$$)
+      )
       .subscribe((product: IProduct | null) => {
         console.log(product);
       });
+
+
+    this._ubsubscribeSubject$$.next(true);
     // const europeXL: string = Size[52];
     // console.log(`europeXL => ${europeXL}`);
   }

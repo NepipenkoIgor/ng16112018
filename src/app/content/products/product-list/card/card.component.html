@@ -16,6 +16,6 @@
       Цена: <strong>{{product.price | number:'1.0-0'}}</strong>
       <!--<span class="tooltiptext open">Эквив. ~ 150$</span>-->
     </div>
-    <button class="catalogItem__btn">Заказать</button>
+    <button class="catalogItem__btn" (click)="addProductToCart(product)">Заказать</button>
   </div>
 </div>
