@@ -32,6 +32,7 @@ export class ProductsEffect {
   @Effect()
   public product$: Observable<Action> = this._actions$.pipe(
     ofType(GET_PRODUCT_PENDING),
+    // withLatestFrom(this._store.select('user')),
     // tslint:disable-next-line
     switchMap((action: any) =>
       this._http.get<IProduct>(`/products/${action.payload}`).pipe(
@@ -45,7 +46,8 @@ export class ProductsEffect {
 
   public constructor(
     private _http: HttpClient,
-    private _actions$: Actions
+    private _actions$: Actions,
+    // private _store: Store<IStore>
   ) {
   }
 }

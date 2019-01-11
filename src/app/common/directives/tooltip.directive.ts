@@ -2,7 +2,7 @@ import { Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Render
 
 @Directive({
   selector: '[courseTooltip]',
-  exportAs: 'courseTooltip,tool,tip'
+  exportAs: 'courseTooltip,tool,tip,tooltip'
 })
 export class TooltipDirective implements OnInit {
 

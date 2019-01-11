@@ -11,6 +11,16 @@ export interface IStore {
   currentProduct: IProduct;
   user: IUser;
 }
+export interface IStore {
+  items: any[];
+  currentItem: any;
+  filter: {
+    search: string;
+    type: s
+  }
+}
+
+selector(items,filter)
 
 
 export const reducers: ActionReducerMap<IStore> = {

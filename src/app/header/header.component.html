@@ -5,7 +5,9 @@
         <div class="top-nav-wrap">
           <ul>
             <li [routerLink]="['signup']" routerLinkActive="active"><a>Регистрация</a></li>
-            <li [routerLink]="['products']" routerLinkActive="active"><a >Продукты</a></li>
+            <li [routerLink]="[{outlets: {primary: ['products'],aux1: null}}]" routerLinkActive="active"><a>Продукты</a>
+            </li>
+            <li [routerLink]="[{outlets: {primary: 'home',aux1: 'chat'}}]" routerLinkActive="active"><a>Чат</a></li>
           </ul>
         </div>
       </div>

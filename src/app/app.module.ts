@@ -25,6 +25,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffect } from './store/effects/products.effect';
 import { CartComponent } from './header/cart/cart.component';
 import { CartProductComponent } from './header/cart/cart-product/cart-product.component';
+import { ChatComponent } from './common/components/chat/chat.component';
+import { CdComponent } from './content/cd/cd.component';
+import { DefaultComponent } from './content/cd/default/default.component';
+import { OnPushComponent } from './content/cd/on-push/on-push.component';
+import { FormsModule } from '@angular/forms';
+import { ChildComponent } from './content/cd/on-push/child/child.component';
 // NgModule == es6 module
 // declarations == let , const
 @NgModule({
@@ -39,10 +45,16 @@ import { CartProductComponent } from './header/cart/cart-product/cart-product.co
     ProductComponent,
     CartComponent,
     CartProductComponent,
+    ChatComponent,
+    CdComponent,
+    DefaultComponent,
+    OnPushComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ProductsEffect]),
     environment.production

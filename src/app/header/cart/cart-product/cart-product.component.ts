@@ -27,6 +27,7 @@ export class CartProductComponent {
   }
 
   public decrementProduct(product: ICartProduct): void {
+    console.log(`From component ===> `, product, product.count)
     if (product.count === 1) {
       this.remove.emit(product._id);
       return;

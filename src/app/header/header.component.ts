@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements DoCheck {
 
   @Input()
   public logo!: string;
@@ -21,6 +21,10 @@ export class HeaderComponent {
   ) {
     // tslint:disable-next-line
     console.log('constructor');
+  }
+
+  public ngDoCheck(): void {
+    console.log('ngDoCheck');
   }
 
   public goToProducts(): void {

@@ -2,26 +2,43 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="registration-wrapper">
+        <div class="registration-wrapper" [formGroup]="signUpForm">
           <h1>Регистрация</h1>
-          <form action="">
-            <label class="input-wrapper no-valid">
+          <form ngNoForm>
+            <label class="input-wrapper ">
               <span>Ваше имя</span>
-              <input type="text">
+              <input type="text" formControlName="firstName">
               <div class="valid-message">Введите корректное имя</div>
             </label>
-            <label class="input-wrapper">
+            <label class="input-wrapper" [ngClass]="{'no-valid': !signUpForm.get('lastName').valid }">
               <span>Ваша фамилия</span>
-              <input type="text">
+              <input type="text" formControlName="lastName">
+              <div class="valid-message" *ngIf="!signUpForm.get('lastName').valid">Поле обязательное и должно быть более
+                5 символов
+              </div>
             </label>
-            <label class="input-wrapper">
-              <span>Ваш e-mail</span>
-              <input type="email">
+            <label class="input-wrapper" [ngClass]="{'no-valid': !signUpForm.get('lastName').valid }">
+              <span>Пол</span>
+              <course-switcher formControlName="male"></course-switcher>
             </label>
-            <label class="input-wrapper">
-              <span>Пароль</span>
-              <input type="password">
-            </label>
+
+            <span>Ваш e-mail</span> <span (click)="addEmail()">+</span>
+            <ng-container *ngFor="let emailControl of signUpForm.get('emails').controls; index as i">
+              <label class="input-wrapper">
+                <input type="email" [formControl]="emailControl">
+                <span (click)="removeEmail(i)">X</span>
+              </label>
+            </ng-container>
+            <div formGroupName="passwordGroup">
+              <label class="input-wrapper">
+                <span>Пароль</span>
+                <input type="password" formControlName="password">
+              </label>
+              <label class="input-wrapper">
+                <span>Пароль</span>
+                <input type="password" formControlName="pconfirm">
+              </label>
+            </div>
             <div class="btn-wrapper">
               <button>Зарегистрироваться</button>
             </div>
@@ -30,12 +47,19 @@
       </div>
     </div>
   </div>
+  <pre>1.a => {{signUpForm.value | json }}</pre>
+  <pre>1.a => {{signUpForm.get('firstName').errors  | json }}</pre>
+  <!--<pre>1.b => {{lastName.valueChanges | async}}</pre>-->
+  <!--<pre>2.a => {{c.valid}}</pre>-->
+  <!--<pre>2.b =>{{lastName.valid}}</pre>-->
+  <!--<pre>3.b =>{{lastName.errors | json}}</pre>-->
   <div class="textContainer">
     <div class="container">
       <div class="row">
         <h3 class="textContainer__header">Интернет магазин отделки и декора интерьеров <span>GLUTS</span></h3>
 
-        <p class="textContainer__paragraph">Мы рады приветствовать Вас на сайте компании «Глатс». У нас существует огромный ассортимент продукции
+        <p class="textContainer__paragraph">Мы рады приветствовать Вас на сайте компании «Глатс». У нас существует
+          огромный ассортимент продукции
           для насыщения интерьера
           и выгодные условия для заказчиков, архитекторов и дизайнеров. Мы можем предложить Вашему вниманию
           все необходимое для создания

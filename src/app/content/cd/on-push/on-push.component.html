@@ -1,0 +1,10 @@
+<div>
+  <input type="text" [(ngModel)]="person.firstName">
+</div>
+<div>
+  <input type="text" [(ngModel)]="person.lastName">
+</div>
+<span>{{person.getDate() | date:'hh:mm:ss'}}</span>
+
+<h3>On push child</h3>
+<course-child></course-child>
